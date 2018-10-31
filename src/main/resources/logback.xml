@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	[Appender 종류]
+	ConsoleAppender: 콘솔에 로그를 찍는 방법
+	FileAppender: 파일에 로그를 찍는 방법
+	RollingFileAppender: 여러 개의 파일을 순회하면서 로그를 찍는 방법
+	SMTPAppender: 로그를 메일에 찍어 보내는 방법
+	DBAppender: 데이터베이스에 로그를 찍는 방법
+	기타 SocketAppender, SSLSocketAppender 등이 존재
+-->
+<configuration>
+     <property name="LOGS_ABSOLUTE_PATH" value="./logs"  />
+     <appender name="rolling"  class="ch.qos.logback.core.rolling.RollingFileAppender">
+          <file>${LOGS_ABSOLUTE_PATH}/logtest.log</file>
+          <encoder  class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+              <pattern>[%d{yyyy-MM-dd HH:mm:ss.SSS}]  [%-5level][%.20thread] | %C{1}.%M [%L] - %msg%n</pattern>
+          </encoder>
+          <rollingPolicy  class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+               <fileNamePattern>${LOGS_ABSOLUTE_PATH}/logtest.%d{yyyy-MM-dd}.log</fileNamePattern>
+          </rollingPolicy>
+     </appender>
+     
+     <root level="DEBUG">
+          <appender-ref ref="rolling" />
+     </root>
+</configuration>
