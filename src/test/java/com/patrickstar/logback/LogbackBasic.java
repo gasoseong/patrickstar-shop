@@ -12,6 +12,12 @@ public class LogbackBasic {
         
         logger.debug(LogbackBasic.class.getName());
         
+        try {
+        	int a = 1/0;
+        } catch (Exception e) {
+        	logger.error(LogbackBasic.class.getSimpleName(), e);
+        }
+        
         System.out.println("Done");
 	}
 }

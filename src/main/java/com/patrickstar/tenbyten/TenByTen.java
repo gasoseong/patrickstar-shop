@@ -1,5 +1,7 @@
 package com.patrickstar.tenbyten;
 
-public class TenByTen {
+import org.slf4j.Logger;
 
+public class TenByTen {
+	
 }
